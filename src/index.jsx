@@ -30,6 +30,7 @@ module.exports = React.createClass({
             forceGemini: this.props.forceGemini,
             createElements: false
         }).create();
+        window.addEventListener("resize", this.scrollbar.update());
     },
 
     componentDidUpdate() {
@@ -37,6 +38,7 @@ module.exports = React.createClass({
     },
 
     componentWillUnmount() {
+        window.removeEventListener("resize", this.scrollbar.update());
         this.scrollbar.destroy();
         this.scrollbar = null;
     },
